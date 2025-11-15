@@ -78,6 +78,24 @@ This crate provides following cargo feature flags:
 * The `tikv-jemallocator` crate re-exports the [features of the `tikv-jemalloc-sys`
 dependency](https://github.com/tikv/jemallocator/blob/master/jemalloc-sys/README.md#features).
 
+## Building on NixOS
+
+For NixOS users, a `shell.nix` file is provided to set up a development environment with all required dependencies:
+
+```sh
+# Enter the Nix shell
+nix-shell
+
+# Initialize submodules (first time only)
+git submodule update --init --recursive
+
+# Build the project
+cargo build
+
+# Run tests
+cargo test
+```
+
 ## License
 
 This project is licensed under either of
