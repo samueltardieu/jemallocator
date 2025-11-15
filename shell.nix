@@ -25,6 +25,9 @@ pkgs.mkShell {
     shellcheck
   ];
 
+  # Environment variables to fix jemalloc configure with GCC 14
+  CFLAGS = "-Wno-error";
+  
   # Environment variables that might be needed
   shellHook = ''
     echo "jemallocator development environment"
