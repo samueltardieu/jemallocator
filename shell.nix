@@ -25,7 +25,9 @@ pkgs.mkShell {
     shellcheck
   ];
 
-  # Environment variables to fix jemalloc configure with GCC 14
+  # Fix jemalloc configure compatibility with modern GCC
+  # The -Wno-error flag prevents warnings from being treated as errors,
+  # which allows jemalloc's configure tests to complete successfully
   CFLAGS = "-Wno-error";
   
   # Environment variables that might be needed
@@ -33,6 +35,7 @@ pkgs.mkShell {
     echo "jemallocator development environment"
     echo "Rust version: $(rustc --version)"
     echo "Cargo version: $(cargo --version)"
+    echo "GCC version: $(gcc --version | head -1)"
     echo ""
     echo "To build the project:"
     echo "  1. Initialize submodules: git submodule update --init --recursive"
